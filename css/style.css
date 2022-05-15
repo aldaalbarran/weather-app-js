@@ -27,6 +27,10 @@ body{
     height: 95vh;
 }
 
+.container .header .header__city{
+    text-align: center;
+}
+
 .container .info-today{
     margin-top: 10px;
 }
