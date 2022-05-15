@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root{
+    --bg__blue: linear-gradient(0deg, rgba(25,224,240,1) 0%, rgba(25,33,240,1) 100%):
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    color: #FFFFFF;
+    font-family: "Poppins";
+}
+
+.centerXY{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    background: linear-gradient(0deg, rgba(25,159,240,1) 0%, rgba(25,33,240,1) 100%);
+}
+
+.container{
+    margin-top: 5vh;
+    height: 95vh;
+}
+
+.container .info-today{
+    margin-top: 10px;
+}
+
+.container .info-today .info__today-left .info__today-img__weather img{
+    width: 90%;
+}
+
+.container .info-today .info__today-left .info__today-txt__temp .temp{
+    font-size: 5rem;
+}
+
+.container .info-today .info__today-left .info__today-txt__temp .info{
+    font-size: 1.5rem;
+}
+
+.container .info-today .info__today-right .row div:nth-child(4),
+.container .info-today .info__today-right .row div:nth-child(5),
+.container .info-today .info__today-right .row div:nth-child(6){
+    margin-top: 2rem;
+}
+
+.container .info-today .info__today-right .row div label{
+    width: 100%;
+    text-align: center;
+}
+
+.container .info-today .info__today-right .row div label:nth-child(1){
+    font-size: 1.75rem;
+}
+
+.container .info-today .info__today-right .row div label:nth-child(2){
+    font-size: 1rem;
+    color: #c8c8c8;
+}
+
+.container .info-week div{
+    padding-top: 50px;
+    text-align: center;
+}
+
+.container .info-week div .txt-day{
+    font-size: 1.5rem;
+}
+
+.container .info-week div img{
+    width: 80%;
+}
+
+.container .info-week div .txt-num{
+    font-size: 1.25rem;
+}
