@@ -115,6 +115,37 @@ footer{
         font-size: 3rem;
     }
 
+    .container .info-today .info__today-left .info__today-img__weather img{
+        width: 80%;
+    }
+    
+    .container .info-today .info__today-left .info__today-txt__temp .temp{
+        font-size: 3rem;
+    }
+    
+    .container .info-today .info__today-left .info__today-txt__temp .info{
+        font-size: 1rem;
+    }
+
+    .container .info-today .info__today-right .row{
+        margin-top: 50px;
+    }
+
+    .container .info-today .info__today-right .row div:nth-child(4),
+    .container .info-today .info__today-right .row div:nth-child(5),
+    .container .info-today .info__today-right .row div:nth-child(6){
+        margin-top: 50px;
+    }
+
+    .container .info-today .info__today-right .row div label:nth-child(1){
+        font-size: 1.5rem;
+    }
+    
+    .container .info-today .info__today-right .row div label:nth-child(2){
+        font-size: 1rem;
+        color: #c8c8c8;
+    }
+
     .container .info-week div{
         margin-top: 100px;
         padding: 0 !important;
