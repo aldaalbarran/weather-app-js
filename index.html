@@ -1,126 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body class="position-relative">
     <div class="container">
-        <div class="row header">
-            <div class="header__search col-lg-5 centerXY">
-                <div class="row w-100">
-                    <div class="col-8">
-                        <input type="text" name="" id="" class="txt-search form-control" placeholder="Write the name of a city">
+        <form action="" id="app" class="app">
+            <div class="row header">
+                <div class="header__search col-lg-5 centerXY">
+                    <div class="row w-100">
+                        <div class="col-10">
+                            <input type="text" id="txt-search" class="txt-search form-control" placeholder="Mexico City">
+                        </div>
+                        <div class="col-2">
+                            <button id="btn-search" class="btn btn-dark btn-search form-control"><i class="fas fa-search"></i></button>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-dark btn-search form-control">SEARCH</button>
+                </div>
+                <div class="header__city col-lg-4">
+                    <h1 id="txtCity"></h1>
+                </div>
+
+                <div class="header__day col-lg-3 centerXY">
+                    <h4 id="txtDay"></h4>
+                </div>
+            </div>
+            <div class="row info-today">
+                <div class="info__today-left col-lg-6">
+                    <div class="row">
+                        <div class="col-6 info__today-img__weather centerXY">
+                            <img id="imgStatus" src="" alt="img__weather">
+                        </div>
+
+                        <div class=" col-6 info__today-txt__temp centerXY">
+                            <label id="txtTemp" class="temp"></label>
+                            <label id="txtDescTemp" class="info"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="info__today-right col-lg-6 centerXY">
+                    <div class="row">
+                        <div class="col-4">
+                            <label id="txtTempMax" class="num-high"></label>
+                            <label class="txt-high"><i class="fa-solid fa-temperature-high"></i> High</label>
+                        </div>
+
+                        <div class="col-4">
+                            <label id="txtWind" class="num-wind"></label>
+                            <label class="txt-wind"><i class="fa-solid fa-wind"></i> Wind</label>
+                        </div>
+
+                        <div class="col-4">
+                            <label id="txtSunrise" class="num-sunrise"></label>
+                            <label class="txt-sunrise"><i class="fa-solid fa-sun"></i> Sunrise</label>
+                        </div>
+
+                        <div class="col-4">
+                            <label id="txtTempMin" class="num-low"></label>
+                            <label class="txt-low"><i class="fa-solid fa-temperature-low"></i> Low</label>
+                        </div>
+
+                        <div class="col-4">
+                            <label id="txtRain" class="num-rain"></label>
+                            <label class="txt-rain"><i class="fa-solid fa-cloud-rain"></i> rain</label>
+                        </div>
+
+                        <div class="col-4">
+                            <label id="txtSunset" class="num-sunset"></label>
+                            <label class="txt-sunset"><i class="fa-solid fa-mountain-sun"></i> Sunset</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="header__city col-lg-4">
-                <h1>Mexico City</h1>
-            </div>
 
-            <div class="header__day col-lg-3 centerXY">
-                <h4>Saturday 14 May</h4>
-            </div>
-        </div>
-        <div class="row info-today">
-            <div class="info__today-left col-lg-6">
-                <div class="row">
-                    <div class="col-6 info__today-img__weather centerXY">
-                        <img src="./img/clear-day.svg" alt="img__weather">
-                    </div>
-                    
-                    <div class=" col-6 info__today-txt__temp centerXY">
-                        <label class="temp">24°C</label>
-                        <label class="info">Mostly sunny</label>
-                    </div>
+            <!--
+            <div class="row info-week bt-10">
+                <div class="col-6 col-lg-2">
+                    <label for="" class="txt-day">Sunday</label>
+                    <img src="./img/animated/cloudy-night-1.svg" alt="">
+                    <label for="" class="txt-num">22°C</label>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <label for="" class="txt-day">Monday</label>
+                    <img src="./img/animated/thunder.svg" alt="">
+                    <label for="" class="txt-num">19°C</label>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <label for="" class="txt-day">Tuesday</label>
+                    <img src="./img/animated/snowy-4.svg" alt="">
+                    <label for="" class="txt-num">15°C</label>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <label for="" class="txt-day">Wednesday</label>
+                    <img src="./img/animated/snowy-5.svg" alt="">
+                    <label for="" class="txt-num">22°C</label>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <label for="" class="txt-day">Thursday</label>
+                    <img src="./img/animated/cloudy-night-3.svg" alt="">
+                    <label for="" class="txt-num">19°C</label>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <label for="" class="txt-day">Friday</label>
+                    <img src="./img/animated/weather.svg" alt="">
+                    <label for="" class="txt-num">15°C</label>
                 </div>
             </div>
-            <div class="info__today-right col-lg-6 centerXY">
-                <div class="row">
-                    <div class="col-4">
-                        <label class="num-high">23°C</label>
-                        <label class="txt-high">High</label>
-                    </div>
-
-                    <div class="col-4">
-                        <label class="num-wind">7mph</label>
-                        <label class="txt-wind">Wind</label>
-                    </div>
-
-                    <div class="col-4">
-                        <label class="num-sunrise">05:27</label>
-                        <label class="txt-sunrise">Sunrise</label>
-                    </div>
-
-                    <div class="col-4">
-                        <label class="num-low">14°C</label>
-                        <label class="txt-low">Low</label>
-                    </div>
-
-                    <div class="col-4">
-                        <label class="num-rain">0%</label>
-                        <label class="txt-rain">rain</label>
-                    </div>
-
-                    <div class="col-4">
-                        <label class="num-sunset">20:57</label>
-                        <label class="txt-sunset">Sunset</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row info-week bt-10">
-            <div class="col-6 col-lg-2">
-                <label for="" class="txt-day">Sunday</label>
-                <img src="./img/clear-day.svg" alt="">
-                <label for="" class="txt-num">22°C</label>
-            </div>
-
-            <div class="col-6 col-lg-2">
-                <label for="" class="txt-day">Monday</label>
-                <img src="./img/partly-cloudy-day.svg" alt="">
-                <label for="" class="txt-num">19°C</label>
-            </div>
-
-            <div class="col-6 col-lg-2">
-                <label for="" class="txt-day">Tuesday</label>
-                <img src="./img/rain.svg" alt="">
-                <label for="" class="txt-num">15°C</label>
-            </div>
-
-            <div class="col-6 col-lg-2">
-                <label for="" class="txt-day">Wednesday</label>
-                <img src="./img/clear-day.svg" alt="">
-                <label for="" class="txt-num">22°C</label>
-            </div>
-
-            <div class="col-6 col-lg-2">
-                <label for="" class="txt-day">Thursday</label>
-                <img src="./img/partly-cloudy-day.svg" alt="">
-                <label for="" class="txt-num">19°C</label>
-            </div>
-
-            <div class="col-6 col-lg-2">
-                <label for="" class="txt-day">Friday</label>
-                <img src="./img/rain.svg" alt="">
-                <label for="" class="txt-num">15°C</label>
-            </div>
-        </div>
+            -->
+        </form>
     </div>
-    
+
     <footer class="text-center text-white m-0 p-5">
         <div class="text-center">
-          © 2022 Copyright:
-          <a class="link-light" href="https://github.com/aldaalbarran" target="_blank">@aldaalbarran</a>
+            © 2022 Copyright:
+            <a class="link-light" href="https://github.com/aldaalbarran" target="_blank">@aldaalbarran</a>
         </div>
-      </footer>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+    <script src="./js/app.js"></script>
 </body>
+
 </html>
