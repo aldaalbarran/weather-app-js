@@ -68,7 +68,7 @@ body{
 }
 
 .container .info-week div{
-    padding-top: 50px;
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -82,4 +82,60 @@ body{
 
 .container .info-week div .txt-num{
     font-size: 1.25rem;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+}
+
+@media (max-width:992px){
+    body{
+        background: linear-gradient(0deg, rgba(25,159,240,1) 0%, rgba(25,33,240,1) 100%);
+        background-size: cover;
+        background-position: center;
+    }
+
+    .container{
+        margin-top: 5vh;
+        height: auto;
+    }
+
+    .container .header .header__city{
+        margin-top: 30px;
+    }
+
+    .container .header .header__city h1{
+        font-size: 3rem;
+    }
+
+    .container .info-week div{
+        margin-top: 100px;
+        padding: 0 !important;
+        text-align: center;
+    }
+
+    .container .info-week div .txt-day{
+        width: 100%;
+        font-size: 1.5rem;
+    }
+
+    .container .info-week div img{
+        width: 50%;
+    }
+    
+    .container .info-week div .txt-num{
+        width: 100%;
+        font-size: 1.25rem;
+    }
+
+    footer{
+        position: relative;
+    }
 }
