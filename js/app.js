@@ -1,14 +1,16 @@
-window.addEventListener('load', ()=> {
-
-})
-
 (function () {
     var app = document.getElementById('app')
     var txtSearch = document.getElementById('txt-search')
+    var error = document.getElementById('alert-error')
 
-    var city = "Mexico City"
-    var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=4ef5b01cd2060237ebbb1a0ef97a1870`
-    getWeather(city)
+    var degrees = " °C"
+    var velocity = "m/s"
+
+    var city = txtSearch.value
+    var apiKey = "4ef5b01cd2060237ebbb1a0ef97a1870"
+
+    var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+    getWeather(url, degrees, velocity)
 
     //Events
     app.addEventListener('submit', function (e) {
@@ -17,11 +19,49 @@ window.addEventListener('load', ()=> {
 
     app.elements.namedItem('btn-search').addEventListener('click', function () {
         city = txtSearch.value
-        getWeather(city)
+        if (city == "" || city == null) {
+            error.classList.remove('d-none')
+            setTimeout(function () {
+                error.classList.add('d-none')
+            }, 2000);
+        } else {
+            velocity = " m/s"
+            url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+            getWeather(url, degrees, velocity)
+        }
     })
 
-    function getWeather(city) {
-        var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=4ef5b01cd2060237ebbb1a0ef97a1870`
+    app.elements.namedItem('btn-celcius').addEventListener('click', function () {
+        city = txtSearch.value
+        if (city == "" || city == null) {
+            error.classList.remove('d-none')
+            setTimeout(function () {
+                error.classList.add('d-none')
+            }, 2000);
+        } else {
+            degrees = " °C"
+            velocity = " m/s"
+            url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+            getWeather(url, degrees, velocity)
+        }
+    })
+
+    app.elements.namedItem('btn-farenheit').addEventListener('click', function () {
+        city = txtSearch.value
+        if (city == "" || city == null) {
+            error.classList.remove('d-none')
+            setTimeout(function () {
+                error.classList.add('d-none')
+            }, 2000);
+        } else {
+            degrees = " °F"
+            velocity = " mph"
+            url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+            getWeather(url, degrees, velocity)
+        }
+    })
+
+    function getWeather(url, degrees, velocity) {
 
         fetch(url)
             .then(response => { return response.json() })
@@ -38,71 +78,71 @@ window.addEventListener('load', ()=> {
                 txtCity.textContent = cityName
 
                 let temp = Math.round(data.main.temp)
-                txtTemp.textContent = `${temp} °C`
+                txtTemp.textContent = `${temp} ${degrees}`
 
                 let descTemp = data.weather[0].description
                 txtDescTemp.textContent = descTemp
 
                 let tempMax = Math.round(data.main.temp_max)
-                txtTempMax.textContent = `${tempMax} °C`
+                txtTempMax.textContent = `${tempMax} ${degrees}`
 
                 let tempMin = Math.round(data.main.temp_min)
-                txtTempMin.textContent = `${tempMin} °C`
+                txtTempMin.textContent = `${tempMin} ${degrees}`
 
-                let wind = `${data.wind.speed} km/h`
+                let wind = `${data.wind.speed} ${velocity}`
                 txtWind.textContent = wind
 
-                let rain = `${data.main.humidity}%`
-                txtRain.textContent = rain
+                let humidity = `${data.main.humidity}%`
+                txtHumidity.textContent = humidity
 
                 let sunrise = data.sys.sunrise
                 let srDate = new Date(sunrise * 1000)
                 let srHours = srDate.getHours()
                 let srMinutes = srDate.getMinutes()
-                srMinutes.toString().length == 1 ? txtSunrise.textContent = srHours+': 0'+srMinutes : txtSunrise.textContent = srHours+': '+srMinutes
-                
+                srMinutes.toString().length == 1 ? txtSunrise.textContent = srHours + ': 0' + srMinutes : txtSunrise.textContent = srHours + ': ' + srMinutes
+
                 let sunset = data.sys.sunset
                 let ssDate = new Date(sunset * 1000)
                 let ssHours = ssDate.getHours()
                 let ssMinutes = srDate.getMinutes()
-                ssMinutes.toString().length == 1 ? txtSunset.textContent = ssHours+': 0'+ssMinutes : txtSunset.textContent = ssHours+': '+ssMinutes
+                ssMinutes.toString().length == 1 ? txtSunset.textContent = ssHours + ': 0' + ssMinutes : txtSunset.textContent = ssHours + ': ' + ssMinutes
 
                 //para iconos dinámicos
-                
+
                 console.log(data.weather[0].main)
                 switch (data.weather[0].main) {
                     case 'Thunderstorm':
-                      imgStatus.src='./img/animated/thunder.svg'
-                      //console.log('TORMENTA');
-                      break;
+                        imgStatus.src = './img/animated/thunder.svg'
+                        //console.log('TORMENTA');
+                        break;
                     case 'Drizzle':
-                      imgStatus.src='./img/animated/rainy-2.svg'
-                      //console.log('LLOVIZNA');
-                      break;
+                        imgStatus.src = './img/animated/rainy-2.svg'
+                        //console.log('LLOVIZNA');
+                        break;
                     case 'Rain':
-                      imgStatus.src='./img/animated/rainy-7.svg'
-                      //console.log('LLUVIA');
-                      break;
+                        imgStatus.src = './img/animated/rainy-7.svg'
+                        //console.log('LLUVIA');
+                        break;
                     case 'Snow':
-                        imgStatus.src='./img/animated/snowy-6.svg'
+                        imgStatus.src = './img/animated/snowy-6.svg'
                         //console.log('NIEVE');
-                      break;                        
+                        break;
                     case 'Clear':
-                        imgStatus.src='./img/animated/day.svg'
+                        imgStatus.src = './img/animated/day.svg'
                         //console.log('LIMPIO');
-                      break;
+                        break;
                     case 'Atmosphere':
-                        imgStatus.src='./img/animated/weather.svg'
+                        imgStatus.src = './img/animated/weather.svg'
                         //console.log('ATMOSFERA');
-                        break;  
+                        break;
                     case 'Clouds':
-                        imgStatus.src='./img/animated/cloudy-day-1.svg'
+                        imgStatus.src = './img/animated/cloudy-day-1.svg'
                         //console.log('NUBES');
-                        break;  
+                        break;
                     default:
-                        //imgStatus.src='./img/animated/cloudy-day-1.svg'
-                        console.log('por defecto');
-                  }
+                        imgStatus.src = './img/animated/cloudy-day-1.svg'
+                    //console.log('por defecto');
+                }
 
             })
             .catch(error => {

@@ -17,15 +17,21 @@
             <div class="row header">
                 <div class="header__search col-lg-5 centerXY">
                     <div class="row w-100">
-                        <div class="col-10">
-                            <input type="text" id="txt-search" class="txt-search form-control" placeholder="Mexico City">
+                        <div class="col-12">
+                            <input type="text" id="txt-search" class="txt-search form-control" placeholder="Type a city" value="Mexico City">
                         </div>
-                        <div class="col-2">
+                        <div class="col-4">
                             <button id="btn-search" class="btn btn-dark btn-search form-control"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="col-4">
+                            <button id="btn-celcius" class="btn btn-primary btn-celcius form-control">° C</button>
+                        </div>
+                        <div class="col-4">
+                            <button id="btn-farenheit" class="btn btn-danger btn-farenheit form-control">° F</button>
                         </div>
                     </div>
                 </div>
-                <div class="header__city col-lg-4">
+                <div class="header__city col-lg-4 centerXY">
                     <h1 id="txtCity"></h1>
                 </div>
 
@@ -33,6 +39,11 @@
                     <h4 id="txtDay"></h4>
                 </div>
             </div>
+
+            <div id="alert-error" class="alert alert-danger mt-3 d-none" role="alert">
+                Type a city
+            </div>
+
             <div class="row info-today">
                 <div class="info__today-left col-lg-6">
                     <div class="row">
@@ -69,8 +80,8 @@
                         </div>
 
                         <div class="col-4">
-                            <label id="txtRain" class="num-rain"></label>
-                            <label class="txt-rain"><i class="fa-solid fa-cloud-rain"></i> rain</label>
+                            <label id="txtHumidity" class="num-rain"></label>
+                            <label class="txt-humidity"><i class="fa-solid fa-cloud-rain"></i> Humidity</label>
                         </div>
 
                         <div class="col-4">
