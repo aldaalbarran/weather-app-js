@@ -67,12 +67,14 @@
             .then(response => { return response.json() })
             .then(data => {
 
-                let dnDate = new Date()
-                let dnDayName = dayNameNow()
+                let dnDate = new Date(data.dt * 1000)
+                let dnDayName = dayNameNow(dnDate)
                 let dnDayNumber = dnDate.getDate()
-                let dnMonth = monthNameNow()
+                let dnMonth = monthNameNow(dnDate)
                 let dnYear = dnDate.getFullYear()
                 txtDay.textContent = `${dnDayName} ${dnDayNumber} ${dnMonth} ${dnYear}`
+                
+                
 
                 let cityName = data.name
                 txtCity.textContent = cityName
@@ -150,8 +152,7 @@
             })
     }
 
-    function dayNameNow() {
-        var a = new Date()
+    function dayNameNow(dnDate) {
         var weekdays = new Array(7)
         weekdays[0] = "Sunday"
         weekdays[1] = "Monday"
@@ -160,26 +161,25 @@
         weekdays[4] = "Thursday"
         weekdays[5] = "Friday"
         weekdays[6] = "Saturday"
-        var day = weekdays[a.getDay()]
+        var day = weekdays[dnDate.getDay()]
         return day
     }
 
-    function monthNameNow() {
-        var a = new Date()
-        var weekdays = new Array(11)
-        weekdays[0] = "January"
-        weekdays[1] = "February"
-        weekdays[2] = "March"
-        weekdays[3] = "April"
-        weekdays[4] = "May"
-        weekdays[5] = "June"
-        weekdays[6] = "July"
-        weekdays[7] = "August"
-        weekdays[8] = "September"
-        weekdays[9] = "October"
-        weekdays[10] = "November"
-        weekdays[11] = "December"
-        var month = weekdays[a.getMonth()]
+    function monthNameNow(dnDate) {
+        var months = new Array(11)
+        months[0] = "January"
+        months[1] = "February"
+        months[2] = "March"
+        months[3] = "April"
+        months[4] = "May"
+        months[5] = "June"
+        months[6] = "July"
+        months[7] = "August"
+        months[8] = "September"
+        months[9] = "October"
+        months[10] = "November"
+        months[11] = "December"
+        var month = months[dnDate.getMonth()]
         return month
     }
 
