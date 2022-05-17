@@ -109,43 +109,8 @@
                 let ssMinutes = srDate.getMinutes()
                 ssMinutes.toString().length == 1 ? txtSunset.textContent = ssHours + ': 0' + ssMinutes : txtSunset.textContent = ssHours + ': ' + ssMinutes
 
-                //para iconos dinámicos
-
-                console.log(data.weather[0].main)
-                switch (data.weather[0].main) {
-                    case 'Thunderstorm':
-                        imgStatus.src = './img/animated/thunder.svg'
-                        //console.log('TORMENTA');
-                        break;
-                    case 'Drizzle':
-                        imgStatus.src = './img/animated/rainy-2.svg'
-                        //console.log('LLOVIZNA');
-                        break;
-                    case 'Rain':
-                        imgStatus.src = './img/animated/rainy-7.svg'
-                        //console.log('LLUVIA');
-                        break;
-                    case 'Snow':
-                        imgStatus.src = './img/animated/snowy-6.svg'
-                        //console.log('NIEVE');
-                        break;
-                    case 'Clear':
-                        imgStatus.src = './img/animated/day.svg'
-                        //console.log('LIMPIO');
-                        break;
-                    case 'Atmosphere':
-                        imgStatus.src = './img/animated/weather.svg'
-                        //console.log('ATMOSFERA');
-                        break;
-                    case 'Clouds':
-                        imgStatus.src = './img/animated/cloudy-day-1.svg'
-                        //console.log('NUBES');
-                        break;
-                    default:
-                        imgStatus.src = './img/animated/cloudy-day-1.svg'
-                    //console.log('por defecto');
-                }
-
+                let statusImg = data.weather[0].icon
+                imgStatus.src = `./img/animated/${statusImg}.svg`
             })
             .catch(error => {
                 console.log(error)
