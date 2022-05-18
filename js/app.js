@@ -20,11 +20,13 @@
     app.elements.namedItem('btn-search').addEventListener('click', function () {
         city = txtSearch.value
         if (city == "" || city == null) {
+            error.textContent = "Type a city"
             error.classList.remove('d-none')
             setTimeout(function () {
                 error.classList.add('d-none')
-            }, 2000);
+            }, 2000)
         } else {
+            degrees = " °C"
             velocity = " m/s"
             url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
             getWeather(url, degrees, velocity)
@@ -37,7 +39,7 @@
             error.classList.remove('d-none')
             setTimeout(function () {
                 error.classList.add('d-none')
-            }, 2000);
+            }, 2000)
         } else {
             degrees = " °C"
             velocity = " m/s"
@@ -52,7 +54,7 @@
             error.classList.remove('d-none')
             setTimeout(function () {
                 error.classList.add('d-none')
-            }, 2000);
+            }, 2000)
         } else {
             degrees = " °F"
             velocity = " mph"
@@ -66,6 +68,15 @@
         fetch(url)
             .then(response => { return response.json() })
             .then(data => {
+                if (data.name == null || data.name == "") {
+                    txtDay.textContent = ""
+                    txtCity.textContent = ""
+                    error.textContent = "Type a valid city"
+                    error.classList.remove('d-none')
+                    setTimeout(function () {
+                        error.classList.add('d-none')
+                    }, 2000)
+                }
 
                 let dnDate = new Date(data.dt * 1000)
                 let dnDayName = dayNameNow(dnDate)
@@ -73,8 +84,6 @@
                 let dnMonth = monthNameNow(dnDate)
                 let dnYear = dnDate.getFullYear()
                 txtDay.textContent = `${dnDayName} ${dnDayNumber} ${dnMonth} ${dnYear}`
-                
-                
 
                 let cityName = data.name
                 txtCity.textContent = cityName
@@ -147,5 +156,4 @@
         var month = months[dnDate.getMonth()]
         return month
     }
-
 }())
