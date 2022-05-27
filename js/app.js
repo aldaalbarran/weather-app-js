@@ -1,15 +1,15 @@
 (function () {
-    var app = document.getElementById('app')
-    var txtSearch = document.getElementById('txt-search')
-    var error = document.getElementById('alert-error')
+    let app = document.getElementById('app')
+    let txtSearch = document.getElementById('txt-search')
+    let error = document.getElementById('alert-error')
 
-    var degrees = " °C"
-    var velocity = "m/s"
+    let degrees = " °C"
+    let velocity = "m/s"
 
-    var city = txtSearch.value
-    var apiKey = "4ef5b01cd2060237ebbb1a0ef97a1870"
+    let city = txtSearch.value
+    let apiKey = "4ef5b01cd2060237ebbb1a0ef97a1870"
 
-    var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
     getWeather(url, degrees, velocity)
 
     //Events
@@ -120,6 +120,7 @@
 
                 let statusImg = data.weather[0].icon
                 imgStatus.src = `./img/animated/${statusImg}.svg`
+                document.body.style.background = `var(--bg__${statusImg})`
             })
             .catch(error => {
                 console.log(error)
